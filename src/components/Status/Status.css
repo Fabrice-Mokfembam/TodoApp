@@ -1,0 +1,51 @@
+.statusContainer{
+  width: calc(100vw - 22vw);
+  height: calc(100vh - 23vh);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+.statusTaskWrapper{
+    min-width: 900px;
+    min-height: 200px;
+    box-shadow: 0px 0px 3px #0a6ba8;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+}
+.statusProjectWrapper{
+    min-width: 900px;
+    min-height: 200px;
+    box-shadow: 0px 0px 3px #0a6ba8;
+    border-radius: 10px;    
+}
+.completedContainer{
+    display: flex;
+    gap: 2rem;
+    font-size: x-large;
+}
+.nomen{
+    font-size: xx-large;
+    margin-top: -40px;
+}
+.completedContainer span{
+    margin: 4px;
+}
+button{
+    padding: .5rem 2rem;
+    background-color: #0a6ba8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    font-family: poppins;
+    font-size: large;
+}
