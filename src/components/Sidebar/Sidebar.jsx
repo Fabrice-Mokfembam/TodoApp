@@ -29,7 +29,7 @@ const Sidebar = () => {
         <div className='image'>
           <img  src={profile} alt="image" />
         </div>
-        <div className='name'>Jon Doe</div>
+        <div className='name'>Thiago Fabrice</div>
       </div>
       <div className='navlinks'>
         <ul className='navbar'>
