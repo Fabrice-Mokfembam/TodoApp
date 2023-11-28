@@ -13,6 +13,7 @@ const AddProject = ({handleSubmit,setProjectDescription,setProjectDuration,setPr
           <label htmlFor="projectName">Project Name:</label>
           <input
             type="text"
+            className='input-project'       
             id="projectName"
             value={projectName}
             onChange={(e) => setProjectName(e.target.value)}
@@ -23,6 +24,7 @@ const AddProject = ({handleSubmit,setProjectDescription,setProjectDuration,setPr
         <div>
           <label htmlFor="projectDescription">Project Description:</label>
           <textarea
+            className='textarea'
             id="projectDescription"
             value={projectDescription}
             onChange={(e) => setProjectDescription(e.target.value)}

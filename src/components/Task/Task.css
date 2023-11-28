@@ -44,3 +44,9 @@
     display: flex;
     gap: 10px;
 }
+.box{
+  width: 20px;
+  height: 20px;
+  border: 1px solid grey;
+  
+}

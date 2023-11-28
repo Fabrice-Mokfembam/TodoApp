@@ -21,6 +21,34 @@ function App() {
   });
 
 
+  const [completedTasks, setCompletedTasks] = useState(() => {
+   
+   const CTasks = localStorage.getItem('completedTasks');
+    if (CTasks == null || CTasks === 'undefined') return []
+    return JSON.parse(CTasks);
+  },[]);
+  
+    useEffect(() => {
+    localStorage.setItem('deletedTasks', JSON.stringify(completedTasks))
+  },[completedTasks])
+
+  const [deletedTasks, setDeletedTasks] = useState(() => {
+   
+   const dTasks = localStorage.getItem('deletedTasks');
+    if (dTasks == null || dTasks === 'undefined') return []
+    return JSON.parse(dTasks);
+  }, []);
+  
+  // useEffect(() => {
+  //   localStorage.clear()
+  // }, []);35338306
+  
+
+    useEffect(() => {
+    localStorage.setItem('deletedTasks', JSON.stringify(deletedTasks))
+  },[deletedTasks])
+
+
   useEffect(() => {
     // Store the array of tasks in local storage whenever it changes
     localStorage.setItem('arrayOfTasks', JSON.stringify(arrayOfTasks));
@@ -36,11 +64,36 @@ function App() {
   };
 
   const deletedItem = index => {
-      setArrayOfTasks(    arrayOfTasks.filter((item,key) => {
-        return key !== index;
+    // console.log(arrayOfTasks);
+    //   let deletedTask =  arrayOfTasks.filter((item, indez) => {
+    //  return indez === index;
+    // })
+    
+    // setDeletedTasks([...deletedTasks, deletedTask])
+
+    setArrayOfTasks(arrayOfTasks.filter((item, key) => {
+      return key !== index;
     }))
+     console.log('after',arrayOfTasks);
+  }
+  
+  const addCompletedTasks = (key) => {
+    let completedTask =  arrayOfTasks.filter((item, index) => {
+     return index === key;
+    })
+    
+    setCompletedTasks([...completedTasks, completedTask])
+
+    deletedItem(key);
   }
 
+  const addDeletedTasks = (key) => {
+   let deletedTask =  arrayOfTasks.filter((item, index) => {
+     return index === key;
+    })
+    
+    setDeletedTasks([...deletedTasks, deletedTask])
+  }
   //for projects
   const [arrayOfProjectObjects, setArrayOfProjectObjects] = useState(() => {
     const arrayProjects = localStorage.getItem('arrayOfObjects');
@@ -114,7 +167,7 @@ const handleSubmit = (e) => {
           <>
             <div className='mainContent'>
               <Header />
-              <Task inputValue={ inputValue} arrayOfTasks={arrayOfTasks} deleteItem={deletedItem}/>
+              <Task deletedTasks={ deletedTasks} inputValue={inputValue} arrayOfTasks={arrayOfTasks} deleteItem={deletedItem} setDeletedTasks={setDeletedTasks} setCompletedTasks={ setCompletedTasks} addCompletedTasks={addCompletedTasks} addDeletedTasks={addDeletedTasks} />
             </div> 
           </>
         } />
@@ -146,7 +199,7 @@ const handleSubmit = (e) => {
         <>
             <div className='mainContent'>
               <Header />
-              <Status />
+              <Status deletedTasks={ deletedTasks} completedTasks={completedTasks} arrayOfTasks={arrayOfTasks} />
             </div> 
           </>
         } />

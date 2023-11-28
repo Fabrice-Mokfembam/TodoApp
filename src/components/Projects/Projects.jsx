@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Projects.css";
 import { FaPencil, FaRegTrashCan } from 'react-icons/fa6';
 import { FaStar } from 'react-icons/fa';
@@ -8,6 +8,7 @@ import { useNavigate} from "react-router-dom";
 
 const Projects = ({arrayOfProjectObjects,deleteProject}) => {
     const navigate = useNavigate();
+    const [isChecked, setIsChecked] = useState(false);
 
     const navAddProject = () => {
         navigate('/addproject');
@@ -77,7 +78,17 @@ const Projects = ({arrayOfProjectObjects,deleteProject}) => {
                             <div className="state">
                                 <h4>Ongoing</h4>
                             <div className="projectIcons">
-                                <FaPencil className="pen" />
+                              {/* <FaPencil onClick={() => {
+                                                            
+                                    }} className="pen" /> */}
+                                <input
+                                    type="checkbox"
+                                    checked={isChecked}
+                                    onChange={(e) => {
+                                        setIsChecked(e.target.checked)
+                                                            }}
+                                    className="pCheckBox"  /> 
+                                                          
                                 <FaRegTrashCan onClick={() => {
                                       deleteProject(key);
                                 }} className="delete"/>

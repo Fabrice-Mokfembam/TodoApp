@@ -5,13 +5,16 @@ import { FaRegTrashCan } from 'react-icons/fa6';
 import { useNavigate } from "react-router-dom";
 import EditTask from "../EditTask/EditTask";
 
-const Task = ({ inputValue, arrayOfTasks, deleteItem, passEditValue }) => {
+const Task = ({ deletedTasks, arrayOfTasks, deleteItem, passEditValue ,addDeletedTasks,addCompletedTasks,setCompletedTasks,setDeletedTasks}) => {
   const navigate = useNavigate();
   const [showEditTask, setShowEditTask] = useState(false);
   const [editItem, setEditItem] = useState('');
   const [updateValue, setUpdateValue] = useState(editItem);
   const [indexUpdateValue, setIndexUpdateValue] = useState(0);
+  const [test, settest] = useState(0);
   const [date, setDate] = useState(new Date());
+  const [isCheckedTask, setIsCheckedTask] = useState(false);
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -77,7 +80,7 @@ const Task = ({ inputValue, arrayOfTasks, deleteItem, passEditValue }) => {
                     </h3>
                   </div>
                   <div className="taskIcons">
-                    <input type="radio"></input>
+                      <div onClick={()=>{addCompletedTasks(key)}} className="box"></div>
                     <FaPencil
                       className="pen"
                       onClick={() => {
@@ -87,6 +90,7 @@ const Task = ({ inputValue, arrayOfTasks, deleteItem, passEditValue }) => {
                     />
                     <FaRegTrashCan
                       onClick={() => {
+                        addDeletedTasks(key)
                         deleteItem(key);
                       }}
                       className="delete"
@@ -97,6 +101,18 @@ const Task = ({ inputValue, arrayOfTasks, deleteItem, passEditValue }) => {
             })
             }
                       {showEditTask && <EditTask  editItem={editItem} arrayOfTasks={arrayOfTasks} setShowEditTask={ setShowEditTask} replacePreviousTask={replacePreviousTask} setUpdateValue={setUpdateValue} />}
+            {
+              // deletedTasks.map((item) => {
+              //   return (
+              //     <>
+              //       <div>{ item }
+              //       </div>
+                  
+              //     </>
+              //   )
+              // })
+           }
+           
             <button onClick={navToAddTask}>addtask</button>
           </div>
         </div>

@@ -16,7 +16,13 @@
     margin-bottom: 6px;
     border-radius: 10px;
 }      
-     
+.pCheckBox{
+    width: 20px;
+    height: 20px;
+    outline: none;
+    cursor: pointer;
+
+}     
 .projectContent{
    min-width: 500px;
    min-height: 400px;
@@ -68,5 +74,7 @@
     font-size: 24px;
     display: flex;
     gap: 5px;
+    justify-content: center;
+    align-items: center;
 
 }
